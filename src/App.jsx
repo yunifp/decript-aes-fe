@@ -23,7 +23,7 @@ function App() {
     formData.append('file', file)
 
     try {
-      const response = await fetch('/api/decrypt', {
+      const response = await fetch('https://decoded-app-aes.vercel.app/api/decrypt', {
         method: 'POST',
         body: formData
       })
