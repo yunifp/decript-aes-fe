@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg-color: #050505;
+  --text-main: #0f0;
+  --border-color: #0f0;
+  --glow: 0 0 10px #0f0, 0 0 20px #0f0;
+  --error: #f00;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: var(--glow);
+  animation: glitch 2s infinite;
+}
+
+.upload-box {
+  border: 2px dashed var(--border-color);
+  padding: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: rgba(0, 255, 0, 0.05);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.upload-box:hover {
+  background: rgba(0, 255, 0, 0.1);
+  box-shadow: var(--glow);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid var(--border-color);
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.3s;
+  background: transparent;
+  color: var(--text-main);
+}
+
+.custom-file-upload:hover {
+  background: var(--text-main);
+  color: var(--bg-color);
+  box-shadow: var(--glow);
+}
+
+.btn-submit {
+  margin-top: 1.5rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 10px 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-submit:not(:disabled):hover {
+  background: var(--text-main);
+  color: var(--bg-color);
+  box-shadow: var(--glow);
+}
+
+.error-msg {
+  color: var(--error);
+  text-shadow: 0 0 10px var(--error);
+  border: 1px solid var(--error);
+  padding: 10px;
+  margin-bottom: 1rem;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.terminal-window {
+  border: 1px solid var(--border-color);
+  background: rgba(0, 20, 0, 0.8);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  position: relative;
+}
+
+.terminal-header {
+  background: var(--text-main);
+  color: var(--bg-color);
+  padding: 5px 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.terminal-body {
+  padding: 1rem;
+  overflow-x: auto;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.terminal-body pre {
+  margin: 0;
+  text-shadow: 0 0 2px var(--text-main);
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 0 var(--error), -2px 0 var(--text-main); }
+  20% { text-shadow: -2px 0 var(--error), 2px 0 var(--text-main); }
+  40% { text-shadow: 2px 0 var(--error), -2px 0 var(--text-main); }
+  60% { text-shadow: -2px 0 var(--error), 2px 0 var(--text-main); }
+  80% { text-shadow: 2px 0 var(--error), -2px 0 var(--text-main); }
+  100% { text-shadow: -2px 0 var(--error), 2px 0 var(--text-main); }
+}
