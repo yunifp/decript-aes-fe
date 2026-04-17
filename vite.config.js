@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'https://decoded-app-dsg9skc27-yunifps-projects.vercel.app'
+      '/api': 'https://decoded-app-aes.vercel.app/'
     }
   }
 })
